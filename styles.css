@@ -1,0 +1,48 @@
+/**
+ * Simple stylesheet, including the animations for the site.
+ */
+
+html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Flashing animations */
+.green_flash {
+  animation: glow_green 1s ease-in-out infinite alternate;
+}
+
+.red_flash {
+  animation: glow_red 1s ease-in-out infinite alternate;
+}
+
+.text_box {
+  text-align: center;
+  color: white;
+  font-size: 72pt;
+}
+
+@keyframes glow_green {
+  from {
+    background-color: #A8EB34;
+  }
+  to {
+    background-color: #34EB5E;
+  }
+}
+
+@keyframes glow_red {
+  from {
+    background-color: #EB3434;
+  }
+  to {
+    background-color: #AD4A3E;
+  }
+}
