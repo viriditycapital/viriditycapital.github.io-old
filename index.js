@@ -40,33 +40,46 @@ function build_site () {
   // Links
   main_page.appendChild(links);
   links.classList.add('links');
+
+  let link_list = [
+    {
+      name: 'marco',
+      link: 'https://mikinty.github.io/btc-marco/',
+      desc: 'crypto TA 📈'
+    },
+    {
+      name: 'theta',
+      link: 'https://viriditycapital.github.io/theta',
+      desc: 'burn options premiums 🔥'
+    },
+    {
+      name: 'rpt',
+      link: 'https://viriditycapital.github.io/rpt',
+      desc: 'weighted rice purity test'
+    }
+  ];
+
+  // Build the links
+  let table_output = '';
+
+  for (let i = 0; i < link_list.length; i++) {
+    table_output +=
+    `
+    <tr>
+      <td>
+        <a href="${link_list[i].link}">${link_list[i].name}</a>
+      </td>
+      <td>
+        ${link_list[i].desc}
+      </td>
+    </tr>
+    `;
+  }
+
   links.innerHTML = 
   `
   <table>
-  <tr>
-  <td>
-  <a href="https://mikinty.github.io/btc-marco/">marco</a>
-  </td>
-  <td>
-  crypto TA 📈
-  </td>
-  </tr>
-  <tr>
-  <td>
-  <a href="https://viriditycapital.github.io/theta">theta</a>
-  </td>
-  <td>
-  burn options premiums 🔥
-  </td>
-  </tr>
-  <tr>
-  <td>
-  <a href="https://viriditycapital.github.io/rpt/">rpt</a>
-  </td>
-  <td>
-  weighted rice purity test
-  </td>
-  </tr>
+    ${table_output}
   </table>
   `;
 
