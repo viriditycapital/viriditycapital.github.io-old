@@ -21,9 +21,7 @@ function build_site () {
   logo_link.href = 'https://www.linkedin.com/company/66927992';
   let logo = document.createElement('img');
   logo.src = './assets/viridity_logo_small.png';
-  const LOGO_SIZE = 140;
-  logo.width = LOGO_SIZE;
-  logo.height = LOGO_SIZE;
+  logo.id = 'logo';
 
   let title_text = document.createElement('div');
   title_text.innerHTML = 'Viridity Capital, LLC';
@@ -47,6 +45,14 @@ function build_site () {
   <table>
   <tr>
   <td>
+  <a href="https://mikinty.github.io/btc-marco/">marco</a>
+  </td>
+  <td>
+  crypto TA 📈
+  </td>
+  </tr>
+  <tr>
+  <td>
   <a href="https://viriditycapital.github.io/theta">theta</a>
   </td>
   <td>
@@ -68,10 +74,10 @@ function build_site () {
 
   // We hide one of the flashing backgrounds
   if (Math.random() > 0.5) {
-    text_box.innerHTML = 'SPY TO <br> THE FLOOR';
+    text_box.innerHTML = 'SPY TO THE FLOOR';
     text_box.classList.add('red_flash');
   } else {
-    text_box.innerHTML = 'SPY TO <br> THE MOON';
+    text_box.innerHTML = 'SPY TO THE MOON';
     text_box.classList.add('green_flash');
   }
 }
