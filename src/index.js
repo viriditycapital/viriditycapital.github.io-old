@@ -2,8 +2,9 @@
  * Code to build the website
  */
 
-import './styles/index.scss';
+import './styles/main.scss';
 import VIRIDITY_LOGO from './assets/viridity_logo_small.png';
+import * as CONSTANTS from './CONSTANTS.js';
 
 function build_site () {
   // Where we put the logo and title
@@ -15,9 +16,12 @@ function build_site () {
   text_box.classList.add('text_box');
 
   document.body.appendChild(main_page);
+
+  /*** MAIN PAGE ***/
   main_page.appendChild(title_box);
 
   main_page.classList.add('main_page');
+  main_page.classList.add('page');
 
   // Title
   let logo_link = document.createElement('a');
@@ -97,6 +101,70 @@ function build_site () {
     text_box.innerHTML = 'SPY TO THE MOON';
     text_box.classList.add('green_flash');
   }
+
+  /*** PORTFOLIO ***/
+  let page_portfolio = document.createElement('div');
+  document.body.appendChild(page_portfolio);
+
+  page_portfolio.classList.add('page');
+
+  let title_portfolio = document.createElement('div');
+  title_portfolio.innerHTML = 'Portfolio';
+  title_portfolio.classList.add('title_box');
+  title_portfolio.classList.add('portfolio_title');
+
+  let body_portfolio = document.createElement('div');
+
+  body_portfolio.classList.add('body_portfolio');
+
+  for (const [key, value] of Object.entries(CONSTANTS.PORTFOLIO_STONKS)) {
+    let curr_div = document.createElement('div');
+    curr_div.classList.add('list_stonks_wrapper');
+    let curr_title = document.createElement('div');
+    curr_title.classList.add('portfolio_subtitle');
+    let curr_list = document.createElement('div');
+    let curr_list_stonks = '';
+    curr_list.classList.add('list_stonks');
+
+    for (let i = 0 ; i < value.length; i++) {
+      curr_list_stonks += 
+      `
+      <div class="list_ticker">
+      <a href="https://finance.yahoo.com/quote/${value[i].ticker}">
+      ${value[i].ticker}
+      </a>
+      <div>
+      `;
+    }
+
+    curr_title.innerHTML = `<u>${key}</u>`;
+    curr_list.innerHTML = 
+    `
+    ${curr_list_stonks}
+    `;
+    curr_div.appendChild(curr_title);
+    curr_div.appendChild(curr_list);
+
+    body_portfolio.appendChild(curr_div);
+  }
+
+  page_portfolio.appendChild(title_portfolio);
+  page_portfolio.appendChild(body_portfolio);
+
+  // Scrolling behavior between pages
+  // TODO: this only works for 2 pages, need to make an array to expand for more
+  // pages
+  document.addEventListener('mousewheel', (e) => { 
+    let deltaY = e.wheelDeltaY;
+
+    if (deltaY > 100) {
+      // Scroll up
+      window.scrollTo(0, main_page.offsetTop);
+    } else if (deltaY < -100) {
+      // Scroll down
+      window.scrollTo(0, page_portfolio.offsetTop);
+    }
+  });
 }
 
 // Builds the website

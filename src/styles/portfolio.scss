@@ -1,0 +1,44 @@
+/**
+ * Stonk portfolio
+ */
+
+.portfolio_title {
+  margin-top: 24px;
+}
+
+.body_portfolio {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-top: 36px;
+
+  .list_stonks_wrapper {
+    flex-basis: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.portfolio_subtitle {
+  text-align: center;
+  font-size: 3vw;
+}
+
+.list_stonks {
+  font-size: 2vw;
+
+  div {
+    margin: 1vw 0;
+
+    a {
+      text-decoration: none;
+      color: black;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
