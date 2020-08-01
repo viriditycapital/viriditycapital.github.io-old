@@ -2,6 +2,9 @@
  * Code to build the website
  */
 
+import './styles/index.scss';
+import VIRIDITY_LOGO from './assets/viridity_logo_small.png';
+
 function build_site () {
   // Where we put the logo and title
   let main_page = document.createElement('div');
@@ -19,8 +22,9 @@ function build_site () {
   // Title
   let logo_link = document.createElement('a');
   logo_link.href = 'https://www.linkedin.com/company/66927992';
-  let logo = document.createElement('img');
-  logo.src = './assets/viridity_logo_small.png';
+
+  let logo = new Image();
+  logo.src = VIRIDITY_LOGO;
   logo.id = 'logo';
 
   let title_text = document.createElement('div');
