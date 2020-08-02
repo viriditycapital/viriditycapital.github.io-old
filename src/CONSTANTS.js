@@ -55,7 +55,7 @@ export const PORTFOLIO_STONKS = {
   'WATCH 👀': [
     {
       ticker: 'SBUX',
-      info: ''
+      info: 'basic girls'
     },
     {
       ticker: 'PYPL',

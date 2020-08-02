@@ -2,14 +2,18 @@
  * Simple stylesheet, including the animations for the site.
  */
 
+@import './constants.scss';
+
 html, body {
+  margin: 0;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   font-family: Arial, Helvetica, sans-serif;
 
-  background-color: #fafdf9;
+  background-color: $color_background;
 
   overflow: hidden;
   scroll-behavior: smooth;
@@ -21,10 +25,17 @@ html, body {
   width: 100vw;
 }
 
+.main_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Font sizes */
 @media only screen and (max-width: 400px) {
   .title_box {
-    font-size: 8vw;
+    font-size: 7vw;
   }
   #logo {
     width: 22vw;
@@ -32,9 +43,6 @@ html, body {
   }
   .main_page {
     font-size: 5vw;
-  }
-  .text_box {
-    font-size: 6.5vw;
   }
 }
 
@@ -48,9 +56,6 @@ html, body {
   }
   .main_page {
     font-size: 3vw;
-  }
-  .text_box {
-    font-size: 4vw;
   }
 }
 
@@ -74,36 +79,17 @@ table {
   border-spacing: 12px;
 }
 
-/* Flashing animations */
-.green_flash {
-  animation: glow_green 0.5s ease-in-out infinite alternate;
-}
+.toolbar {
+  position: fixed;
+  top: 0;
+  height: $toolbar_height;
+  width: 100vw;
+  background-color: $color_toolbar;
+  box-shadow: 0 1px 5px 1px #727272;
 
-.red_flash {
-  animation: glow_red 0.5s ease-in-out infinite alternate;
-}
+  transition-duration: 0.5s;
 
-.text_box {
-  margin-top: 48px;
-  width: 100%;
-  text-align: center;
-  color: white;
-}
-
-@keyframes glow_green {
-  from {
-    color: #A8EB34;
-  }
-  to {
-    color: #34EB5E;
-  }
-}
-
-@keyframes glow_red {
-  from {
-    color: #EB3434;
-  }
-  to {
-    color: #AD4A3E;
+  &.hidden {
+    transform: translateY(-$toolbar_height);
   }
 }

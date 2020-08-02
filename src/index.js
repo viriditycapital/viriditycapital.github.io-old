@@ -13,17 +13,16 @@ import * as CONSTANTS from './CONSTANTS.js';
 import _ from 'lodash';
 
 function build_site () {
-  // Where we put the logo and title
+  /*** TOOLBAR ***/
+  let toolbar = document.createElement('div');
+  toolbar.classList.add('toolbar');
+  toolbar.classList.add('hidden');
+  document.body.appendChild(toolbar);
+
+  /*** MAIN PAGE ***/
   let main_page = document.createElement('div');
   let title_box = document.createElement('div');
   let links = document.createElement('div');
-  let text_box = document.createElement('div');
-
-  text_box.classList.add('text_box');
-
-  document.body.appendChild(main_page);
-
-  /*** MAIN PAGE ***/
   main_page.appendChild(title_box);
 
   main_page.classList.add('main_page');
@@ -47,12 +46,26 @@ function build_site () {
   title_box.classList.add('title_box');
 
   let motto = document.createElement('div');
-  motto.innerHTML = '#bearlivesmatter';
+  motto.innerHTML = 'free trading tools and education for all';
   motto.classList.add('motto');
   main_page.appendChild(motto);
 
+  document.body.appendChild(main_page);
+
+  /** PROJECTS **/
+  let page_projects = document.createElement('div');
+  page_projects.classList.add('page');
+  page_projects.classList.add('page_projects');
+
+  let title_projects = document.createElement('div');
+  title_projects.innerHTML = 'Projects';
+  title_projects.classList.add('title_box');
+  title_projects.classList.add('projects_title');
+
+  page_projects.appendChild(title_projects);
+
   // Links
-  main_page.appendChild(links);
+  page_projects.appendChild(links);
   links.classList.add('links');
 
   let link_list = [
@@ -97,16 +110,7 @@ function build_site () {
   </table>
   `;
 
-  main_page.appendChild(text_box);
-
-  // We hide one of the flashing backgrounds
-  if (Math.random() > 0.5) {
-    text_box.innerHTML = 'SPY TO THE FLOOR';
-    text_box.classList.add('red_flash');
-  } else {
-    text_box.innerHTML = 'SPY TO THE MOON';
-    text_box.classList.add('green_flash');
-  }
+  document.body.appendChild(page_projects);
 
   /*** PORTFOLIO ***/
   let page_portfolio = document.createElement('div');
@@ -204,6 +208,7 @@ function build_site () {
   // Set of pages, in order
   let PAGES = [
     main_page,
+    page_projects,
     page_portfolio,
     page_contact
   ];
@@ -220,6 +225,12 @@ function build_site () {
     } else if (deltaY < -100) {
       // Scroll down
       curr_page_idx = Math.min(NUM_PAGES - 1, curr_page_idx + 1);
+    }
+
+    if (curr_page_idx > 0) {
+      toolbar.classList.remove('hidden');
+    } else {
+      toolbar.classList.add('hidden');
     }
 
     window.scrollTo(0, PAGES[curr_page_idx].offsetTop);
