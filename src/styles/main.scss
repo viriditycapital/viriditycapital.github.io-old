@@ -2,7 +2,11 @@
  * Compiles all the stylesheets together
  */
 
+// Main pages
 @import './index.scss';
 @import './pages/projects.scss';
 @import './pages/portfolio.scss';
 @import './pages/contact.scss';
+
+// Components
+@import './components/toolbar.scss';

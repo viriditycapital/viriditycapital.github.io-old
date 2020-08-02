@@ -1,0 +1,68 @@
+/**
+ * Top navbar
+ */
+
+@import '../constants.scss';
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  height: $toolbar_height;
+  width: 100vw;
+  background-color: $color_toolbar;
+  box-shadow: 0 1px 5px 1px #727272;
+
+  transition-duration: 0.5s;
+
+  &.hidden {
+    transform: translateY(-$toolbar_height);
+  }
+
+  .logo_small_wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-left: 24px;
+
+    .title_small {
+      font-size: 23px;
+    }
+
+    .logo_small {
+      height: $toolbar_height;
+    }
+  }
+
+  .toolbar_links_wrapper {
+    display: flex;
+    flex-direction: row;
+
+    margin-right: 24px;
+
+    &:hover {
+
+    }
+
+    .toolbar_link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      &:link, &:visited {
+        text-decoration: none;
+        color: black;
+      }
+
+      /* mouse over link */
+      &:hover {
+        color: $viridity_light;
+      }
+    }
+  }
+}

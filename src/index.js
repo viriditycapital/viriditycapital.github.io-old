@@ -19,6 +19,40 @@ function build_site () {
   toolbar.classList.add('hidden');
   document.body.appendChild(toolbar);
 
+  let viridity_small = document.createElement('div');
+  let logo_small = new Image();
+  logo_small.src = VIRIDITY_LOGO;
+  logo_small.classList.add('logo_small');
+  let title_small = document.createElement('div');
+  title_small.classList.add('title_small');
+  title_small.innerHTML = 'Viridity Capital';
+  viridity_small.appendChild(logo_small);
+  viridity_small.appendChild(title_small);
+  viridity_small.classList.add('logo_small_wrapper');
+
+  let toolbar_links_wrapper = document.createElement('div');
+  toolbar_links_wrapper.classList.add('toolbar_links_wrapper');
+  let TOOLBAR_LINKS = [
+    {
+      title: 'Insights',
+      link: 'https://viriditycapital.github.io/insights/'
+    }
+  ];
+
+  for (let i = 0; i < TOOLBAR_LINKS.length; i++) {
+    let curr_link = document.createElement('a');
+    curr_link.classList.add('toolbar_link');
+    let curr_link_text = document.createElement('div');
+    curr_link.href = TOOLBAR_LINKS[i].link;
+    curr_link_text.innerHTML = TOOLBAR_LINKS[i].title;
+
+    curr_link.appendChild(curr_link_text);
+    toolbar_links_wrapper.appendChild(curr_link);
+  }
+
+  toolbar.appendChild(viridity_small);
+  toolbar.appendChild(toolbar_links_wrapper);
+
   /*** MAIN PAGE ***/
   let main_page = document.createElement('div');
   let title_box = document.createElement('div');
