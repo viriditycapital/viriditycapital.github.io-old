@@ -128,7 +128,7 @@ function build_site () {
     `
     <tr>
       <td>
-        <a href="${link_list[i].link}">${link_list[i].name}</a>
+        <a class="project_link" href="${link_list[i].link}">${link_list[i].name}</a>
       </td>
       <td>
         ${link_list[i].desc}

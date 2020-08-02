@@ -24,3 +24,13 @@
 table {
   border-spacing: 48px;
 }
+
+.project_link {
+  &:link, &:visited {
+    color: black;
+  }
+
+  &:hover {
+    color: $viridity_light;
+  }
+}
