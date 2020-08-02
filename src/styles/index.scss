@@ -2,23 +2,40 @@
  * Simple stylesheet, including the animations for the site.
  */
 
-html, body {
-  display: flex;
-  justify-content: center;
+@import './constants.scss';
 
-  height: 100vh;
-  width: 100vw;
+html, body {
   margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   font-family: Arial, Helvetica, sans-serif;
 
-  background-color: #fafdf9;
+  background-color: $color_background;
+
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Main pages */
+.page {
+  height: 100vh;
+  width: 100vw;
+}
+
+.main_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Font sizes */
 @media only screen and (max-width: 400px) {
   .title_box {
-    font-size: 8vw;
+    font-size: 7vw;
   }
   #logo {
     width: 22vw;
@@ -26,9 +43,6 @@ html, body {
   }
   .main_page {
     font-size: 5vw;
-  }
-  .text_box {
-    font-size: 6.5vw;
   }
 }
 
@@ -43,9 +57,6 @@ html, body {
   .main_page {
     font-size: 3vw;
   }
-  .text_box {
-    font-size: 4vw;
-  }
 }
 
 .title_box {
@@ -58,46 +69,8 @@ html, body {
   margin-top: 24px;
 }
 
-.main_page {
+.page {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-table {
-  border-spacing: 12px;
-}
-
-/* Flashing animations */
-.green_flash {
-  animation: glow_green 0.5s ease-in-out infinite alternate;
-}
-
-.red_flash {
-  animation: glow_red 0.5s ease-in-out infinite alternate;
-}
-
-.text_box {
-  margin-top: 48px;
-  width: 100%;
-  text-align: center;
-  color: white;
-}
-
-@keyframes glow_green {
-  from {
-    color: #A8EB34;
-  }
-  to {
-    color: #34EB5E;
-  }
-}
-
-@keyframes glow_red {
-  from {
-    color: #EB3434;
-  }
-  to {
-    color: #AD4A3E;
-  }
 }

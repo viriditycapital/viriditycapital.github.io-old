@@ -1,0 +1,36 @@
+/**
+ * Page that lists out the projects 
+ */
+
+@import '../constants.scss';
+
+/* Font sizes */
+@media only screen and (max-width: 400px) {
+  .page_projects {
+    font-size: 5vw;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  .page_projects {
+    font-size: 3vw;
+  }
+}
+
+.projects_title {
+  margin-top: $title_padding + $toolbar_height;
+}
+
+table {
+  border-spacing: 48px;
+}
+
+.project_link {
+  &:link, &:visited {
+    color: black;
+  }
+
+  &:hover {
+    color: $viridity_light;
+  }
+}
