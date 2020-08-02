@@ -4,7 +4,13 @@
 
 import './styles/main.scss';
 import VIRIDITY_LOGO from './assets/viridity_logo_small.png';
+import TWITTER_LOGO from './assets/twitter_logo.png';
+import MAIL_LOGO from './assets/mail.png';
+import GITHUB_LOGO from './assets/github.png';
+import LINKEDIN_LOGO from './assets/linkedin.png';
 import * as CONSTANTS from './CONSTANTS.js';
+
+import _ from 'lodash';
 
 function build_site () {
   // Where we put the logo and title
@@ -151,20 +157,73 @@ function build_site () {
   page_portfolio.appendChild(title_portfolio);
   page_portfolio.appendChild(body_portfolio);
 
+  /** CONTACT **/
+  let page_contact = document.createElement('div');
+  page_contact.classList.add('page');
+  page_contact.classList.add('page_contact');
+  document.body.appendChild(page_contact);
+
+  let contact_links = document.createElement('div');
+  contact_links.classList.add('contact_links');
+
+  let LINKS = [
+    {
+      logo: LINKEDIN_LOGO,
+      link: 'https://www.linkedin.com/company/66927992'
+    },
+    {
+      logo: GITHUB_LOGO,
+      link: 'https://github.com/viriditycapital'
+    },
+    {
+      logo: TWITTER_LOGO,
+      link: 'https://twitter.com/viriditycapital'
+    },
+    {
+      logo: MAIL_LOGO,
+      link: 'mailto:viridity.capital@gmail.com'
+    }
+  ];
+
+  for (let i = 0; i < LINKS.length; i++) {
+    let curr_image = new Image();
+    curr_image.classList.add('link_logo');
+    curr_image.src = LINKS[i].logo;
+
+    let curr_link = document.createElement('a');
+    curr_link.href = LINKS[i].link;
+    curr_link.target = '_blank';
+    curr_link.appendChild(curr_image);
+
+    contact_links.appendChild(curr_link);
+  }
+
+  page_contact.appendChild(contact_links);
+
   // Scrolling behavior between pages
-  // TODO: this only works for 2 pages, need to make an array to expand for more
-  // pages
-  document.addEventListener('mousewheel', (e) => { 
+  // Set of pages, in order
+  let PAGES = [
+    main_page,
+    page_portfolio,
+    page_contact
+  ];
+
+  var curr_page_idx = 0;
+  const NUM_PAGES = PAGES.length;
+
+  document.addEventListener('mousewheel', _.debounce((e) => { 
     let deltaY = e.wheelDeltaY;
 
     if (deltaY > 100) {
       // Scroll up
-      window.scrollTo(0, main_page.offsetTop);
+      curr_page_idx = Math.max(0, curr_page_idx - 1);
     } else if (deltaY < -100) {
       // Scroll down
-      window.scrollTo(0, page_portfolio.offsetTop);
+      curr_page_idx = Math.min(NUM_PAGES - 1, curr_page_idx + 1);
     }
-  });
+
+    window.scrollTo(0, PAGES[curr_page_idx].offsetTop);
+  }, 200));
 }
 
 // Builds the website

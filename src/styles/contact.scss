@@ -1,0 +1,27 @@
+/**
+ * Contacts links
+ */
+
+.page_contact {
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+}
+
+.contact_links {
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .link_logo {
+    width: 13vw;
+
+    transition-duration: 0.5s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
