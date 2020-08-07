@@ -16,7 +16,6 @@ function build_site () {
   /*** TOOLBAR ***/
   let toolbar = document.createElement('div');
   toolbar.classList.add('toolbar');
-  toolbar.classList.add('hidden');
   document.body.appendChild(toolbar);
 
   let viridity_small = document.createElement('div');
@@ -33,6 +32,10 @@ function build_site () {
   let toolbar_links_wrapper = document.createElement('div');
   toolbar_links_wrapper.classList.add('toolbar_links_wrapper');
   let TOOLBAR_LINKS = [
+    {
+      title: 'Design',
+      link: 'https://www.etsy.com/shop/viriditydesigns'
+    },
     {
       title: 'Insights',
       link: 'https://viriditycapital.github.io/insights/'
@@ -295,12 +298,6 @@ function build_site () {
         curr_page_idx = Math.max(0, curr_page_idx - 1);
       }                                                                 
 
-      if (curr_page_idx > 0) {
-        toolbar.classList.remove('hidden');
-      } else {
-        toolbar.classList.add('hidden');
-      }
-
       window.scrollTo(0, PAGES[curr_page_idx].offsetTop);
     }
     /* reset values */
@@ -308,8 +305,10 @@ function build_site () {
     yDown = null;                                             
   }
 
-  document.addEventListener('mousewheel', _.debounce((e) => { 
+  const scroll_handler = _.debounce((e) => {
     let deltaY = e.wheelDeltaY;
+
+    console.log('DEBOUNCE', deltaY);
 
     if (deltaY > 100) {
       // Scroll up
@@ -319,15 +318,18 @@ function build_site () {
       curr_page_idx = Math.min(NUM_PAGES - 1, curr_page_idx + 1);
     }
 
-    if (curr_page_idx > 0) {
-      toolbar.classList.remove('hidden');
-    } else {
-      toolbar.classList.add('hidden');
-    }
-
     window.scrollTo(0, PAGES[curr_page_idx].offsetTop);
-  }, 200));
+  }, 500, {leading:true, trailing: false});
+
+  window.addEventListener('mousewheel', _.debounce(scroll_handler, 200, { leading: true }));
+  window.addEventListener('wheel', (e) => {
+    if (Math.abs(e.wheelDeltaY) > 100) {
+      scroll_handler(e);
+    }
+  });
+  window.addEventListener('wheel', e => console.log(Math.abs(e.deltaY)));
 }
+
 
 // Builds the website
 build_site();
