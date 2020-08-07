@@ -305,10 +305,10 @@ function build_site () {
     yDown = null;                                             
   }
 
+  // A filter, debounce for trackpad scrolling.
+  // TODO: slight bug if the user continues to scroll aggressively, but small use case
   const scroll_handler = _.debounce((e) => {
     let deltaY = e.wheelDeltaY;
-
-    console.log('DEBOUNCE', deltaY);
 
     if (deltaY > 100) {
       // Scroll up
@@ -319,15 +319,29 @@ function build_site () {
     }
 
     window.scrollTo(0, PAGES[curr_page_idx].offsetTop);
-  }, 500, {leading:true, trailing: false});
+  }, 300, {leading:true, trailing: false});
 
-  window.addEventListener('mousewheel', _.debounce(scroll_handler, 200, { leading: true }));
-  window.addEventListener('wheel', (e) => {
+  const scroll_handler_wrapper = (e) => {
     if (Math.abs(e.wheelDeltaY) > 100) {
       scroll_handler(e);
     }
+  };
+
+  window.addEventListener('mousewheel', scroll_handler_wrapper);
+  window.addEventListener('wheel', scroll_handler_wrapper);
+
+  // Key press support for scrolling
+  window.addEventListener('keydown', (e) => {
+    if (e.keyCode === 38) {
+      // Scroll up
+      curr_page_idx = Math.max(0, curr_page_idx - 1);
+    } else if (e.keyCode === 40) {
+      // Scroll down
+      curr_page_idx = Math.min(NUM_PAGES - 1, curr_page_idx + 1);
+    }
+
+    window.scrollTo(0, PAGES[curr_page_idx].offsetTop);
   });
-  window.addEventListener('wheel', e => console.log(Math.abs(e.deltaY)));
 }
 
 
