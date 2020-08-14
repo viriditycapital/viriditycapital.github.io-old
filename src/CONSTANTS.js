@@ -2,6 +2,29 @@
  * Constants for this project
  */
 
+export const LINK_LIST = [
+  {
+    name: 'marco',
+    link: 'https://mikinty.github.io/btc-marco/',
+    desc: 'crypto TA 📈'
+  },
+  {
+    name: 'theta',
+    link: 'https://viriditycapital.github.io/theta',
+    desc: 'burn options premiums 🔥'
+  },
+  {
+    name: 'drypto',
+    link: 'https://viriditycapital.github.io/drypto',
+    desc: 'crypto-themed drinks 🍹'
+  },
+  {
+    name: 'rpt',
+    link: 'https://viriditycapital.github.io/rpt',
+    desc: 'weighted rice purity test'
+  }
+];
+
 /** Portfolio **/
 export const PORTFOLIO_STONKS = {
   'GODTIER 🤑': [

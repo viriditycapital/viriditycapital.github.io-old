@@ -105,36 +105,20 @@ function build_site () {
   page_projects.appendChild(links);
   links.classList.add('links');
 
-  let link_list = [
-    {
-      name: 'marco',
-      link: 'https://mikinty.github.io/btc-marco/',
-      desc: 'crypto TA 📈'
-    },
-    {
-      name: 'theta',
-      link: 'https://viriditycapital.github.io/theta',
-      desc: 'burn options premiums 🔥'
-    },
-    {
-      name: 'rpt',
-      link: 'https://viriditycapital.github.io/rpt',
-      desc: 'weighted rice purity test'
-    }
-  ];
-
   // Build the links
   let table_output = '';
 
-  for (let i = 0; i < link_list.length; i++) {
+  for (let i = 0; i < CONSTANTS.LINK_LIST.length; i++) {
     table_output +=
     `
     <tr>
       <td>
-        <a class="project_link" href="${link_list[i].link}">${link_list[i].name}</a>
+        <a class="project_link" href="${CONSTANTS.LINK_LIST[i].link}">
+          ${CONSTANTS.LINK_LIST[i].name}
+        </a>
       </td>
       <td>
-        ${link_list[i].desc}
+        ${CONSTANTS.LINK_LIST[i].desc}
       </td>
     </tr>
     `;
