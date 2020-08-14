@@ -2,6 +2,17 @@
  * Constants for this project
  */
 
+export const TOOLBAR_LINKS = [
+  {
+    title: 'Insights',
+    link: 'https://viriditycapital.github.io/insights/'
+  },
+  {
+    title: 'Design',
+    link: 'https://www.etsy.com/shop/viriditydesigns/'
+  }
+];
+
 export const LINK_LIST = [
   {
     name: 'marco',
@@ -21,7 +32,7 @@ export const LINK_LIST = [
   {
     name: 'rpt',
     link: 'https://viriditycapital.github.io/rpt',
-    desc: 'weighted rice purity test'
+    desc: 'weighted rice purity test 🤔'
   }
 ];
 

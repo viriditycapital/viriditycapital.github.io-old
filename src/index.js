@@ -31,23 +31,13 @@ function build_site () {
 
   let toolbar_links_wrapper = document.createElement('div');
   toolbar_links_wrapper.classList.add('toolbar_links_wrapper');
-  let TOOLBAR_LINKS = [
-    {
-      title: 'Design',
-      link: 'https://www.etsy.com/shop/viriditydesigns'
-    },
-    {
-      title: 'Insights',
-      link: 'https://viriditycapital.github.io/insights/'
-    }
-  ];
 
-  for (let i = 0; i < TOOLBAR_LINKS.length; i++) {
+  for (let i = 0; i < CONSTANTS.TOOLBAR_LINKS.length; i++) {
     let curr_link = document.createElement('a');
     curr_link.classList.add('toolbar_link');
     let curr_link_text = document.createElement('div');
-    curr_link.href = TOOLBAR_LINKS[i].link;
-    curr_link_text.innerHTML = TOOLBAR_LINKS[i].title;
+    curr_link.href = CONSTANTS.TOOLBAR_LINKS[i].link;
+    curr_link_text.innerHTML = CONSTANTS.TOOLBAR_LINKS[i].title;
 
     curr_link.appendChild(curr_link_text);
     toolbar_links_wrapper.appendChild(curr_link);
@@ -85,7 +75,24 @@ function build_site () {
   let motto = document.createElement('div');
   motto.innerHTML = 'free trading tools and education for all';
   motto.classList.add('motto');
+  let big_links = document.createElement('div');
+  let blog_link = document.createElement('div');
+  let blog_link_wrapper = document.createElement('a');
+  let design_link_wrapper = document.createElement('a');
+  let design_link = document.createElement('div');
+  big_links.classList.add('main_link_wrapper');
+  blog_link.classList.add('main_link');
+  blog_link.innerHTML = '<div>Insights</div>';
+  design_link.classList.add('main_link');
+  design_link.innerHTML = '<div>Designs</div>';
+  blog_link_wrapper.href = 'https://viriditycapital.github.io/insights/';
+  design_link_wrapper.href = 'https://www.etsy.com/shop/viriditydesigns/';
+  blog_link_wrapper.appendChild(blog_link);
+  design_link_wrapper.appendChild(design_link);
+  big_links.appendChild(blog_link_wrapper);
+  big_links.appendChild(design_link_wrapper);
   main_page.appendChild(motto);
+  main_page.appendChild(big_links);
 
   document.body.appendChild(main_page);
 

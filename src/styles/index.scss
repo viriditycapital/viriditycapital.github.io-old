@@ -30,6 +30,38 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .main_link_wrapper {
+    display: flex;
+    flex-direction: row;
+
+    a {
+      text-decoration: none;
+    }
+
+    .main_link {
+      cursor: pointer;
+      width: 20vw;
+      height: 8vw;
+      margin: 24px;
+
+      background-color: $viridity-lighter;
+
+      border-radius: 12px;
+
+      transition: opacity 0.3s ease;
+
+      color: white;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
 }
 
 /* Font sizes */
