@@ -56,9 +56,6 @@ function build_site () {
   main_page.classList.add('page');
 
   // Title
-  let logo_link = document.createElement('a');
-  logo_link.href = 'https://www.linkedin.com/company/66927992';
-
   let logo = new Image();
   logo.src = VIRIDITY_LOGO;
   logo.id = 'logo';
@@ -66,8 +63,7 @@ function build_site () {
   let title_text = document.createElement('div');
   title_text.innerHTML = 'Viridity Capital, LLC';
 
-  logo_link.appendChild(logo);
-  title_box.appendChild(logo_link);
+  title_box.appendChild(logo);
   title_box.appendChild(title_text);
 
   title_box.classList.add('title_box');
